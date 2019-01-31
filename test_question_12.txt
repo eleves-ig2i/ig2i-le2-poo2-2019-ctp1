@@ -1,0 +1,27 @@
+DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.FRANCE);
+Aeroport paris = new Aeroport("CDG", "Paris Charles de Gaulle", 1);
+Aeroport lille = new Aeroport("LIL", "Lille Lesquin", 1);
+Vol v1 = new Vol(paris, lille, 
+        format.parse("31/01/2019 11:45"), 
+        format.parse("31/01/2019 12:30"));
+Vol v2 = new Vol(paris, lille, 
+        format.parse("31/01/2019 17:45"), 
+        format.parse("31/01/2019 18:30"));
+Vol v3 = new Vol(lille, paris, 
+        format.parse("31/01/2019 12:45"), 
+        format.parse("31/01/2019 13:30"));
+Vol v4 = new Vol(paris, lille, 
+        format.parse("02/02/2019 11:45"), 
+        format.parse("02/02/2019 12:30"));
+Vol v5 = new Vol(lille, paris, 
+        format.parse("31/01/2019 15:45"), 
+        format.parse("31/01/2019 16:30"));
+System.out.println("Compatibilité");
+System.out.println(v1.estCompatible(v2)); // false
+System.out.println(v1.estCompatible(v3)); // false
+System.out.println(v1.estCompatible(v4)); // true
+System.out.println(v1.estCompatible(v5)); // true
+System.out.println(v2.estCompatible(v1)); // false
+System.out.println(v3.estCompatible(v1)); // false
+System.out.println(v4.estCompatible(v1)); // true
+System.out.println(v5.estCompatible(v1)); // true
